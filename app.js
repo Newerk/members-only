@@ -4,12 +4,13 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const homeRouter = require("./routes/home");
 const { error } = require("console");
 
 mongoose.connect(process.env.DB_LINK).catch((error) => {
-  handleError(error);
+  console.log(error);
 });
 
 mongoose.connection.on("connected", () => console.log("connected to database"));
