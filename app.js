@@ -3,8 +3,16 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const mongoose = require("mongoose");
 
 const homeRouter = require("./routes/home");
+const { error } = require("console");
+
+mongoose.connect(process.env.DB_LINK).catch((error) => {
+  handleError(error);
+});
+
+mongoose.connection.on("connected", () => console.log("connected to database"));
 
 const app = express();
 

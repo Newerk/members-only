@@ -2,16 +2,21 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userCredSchema = new Schema({
+const userCredentialSchema = new Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   username: { type: String, required: true },
   password: { type: String, required: true },
-  account: { type: Schema.Types.ObjectId, ref: "Account" }, //stores all the roles and messages a user may have
+  isMember: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: false },
 });
 
-userCredSchema.virtual("fullname", () => {
+userCredentialSchema.virtual("fullname", () => {
   return `${this.firstname} ${this.lastname}`;
 });
 
-const userCredential = mongoose.model("Credential", userCredSchema);
+userCredentialSchema.virtual("url", () => {
+  return `/profile/${this._id}`;
+});
+
+module.exports = mongoose.model("Account", userCredentialSchema);
