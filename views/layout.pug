@@ -1,7 +1,19 @@
 doctype html
 html
   head
-    title= title
+    title Members Only
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    header 
+      div#upper-header 
+        button#club-join-btn Join the Club
+        | <--- this should only appear after the user has logged in. this might be relocated
+      div#lower-header 
+        button.home-btn Members Only
+        div.header-btns-wrapper
+          button.signup-btn Sign Up 
+          button.login-btn Login
+
+
+
     block content
