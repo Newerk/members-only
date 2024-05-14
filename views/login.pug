@@ -1,12 +1,12 @@
 extends layout
 
 block content 
-    section#login-content
-        form#login-form(action="", method="post") 
+    section.credentials-content
+        form.credentials-form(action="", method="post") 
             label(for="username") Username: 
                 input(type="text", name="username")
 
             label(for="password") Password: 
-                input(type="text", name="password")
+                input(type="password", name="password")
 
             button(type="submit") Login

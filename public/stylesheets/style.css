@@ -135,14 +135,14 @@ button {
   cursor: pointer;
 }
 
-#login-content {
+.credentials-content {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
 }
 
-#login-form {
+.credentials-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -152,16 +152,16 @@ button {
   width: 30rem;
   background-color: rgb(134, 134, 134);
 }
-#login-form > label {
+.credentials-form > label {
   display: flex;
   flex-direction: column;
   width: 15rem;
 }
 
-#login-form > input {
+.credentials-form > input {
 }
 
-#login-form > button {
+.credentials-form > button {
   margin-top: 2rem;
   width: 5rem;
 }
