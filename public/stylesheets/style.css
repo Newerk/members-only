@@ -173,3 +173,34 @@ button {
 .acc-detail > button {
   border-style: none;
 }
+
+#update-email-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#update-email-form,
+#update-email-form > label {
+  display: flex;
+  flex-direction: column;
+}
+
+#update-email-form {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+}
+#update-email-form > button {
+  place-self: center;
+  width: 12rem;
+}
+
+#update-email-content {
+  display: flex;
+  justify-content: center;
+}
+
+#update-email-wrapper > a {
+  place-self: center;
+}

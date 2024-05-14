@@ -26,7 +26,7 @@ router.post("/signup", placeholder);
 router.get("/account", accountController.account_get); //page that shows information such as username, email, and club status and admin status
 router.post("/account", placeholder);
 
-router.get("/account/email", placeholder);
+router.get("/account/email", accountController.update_email_get);
 router.post("/account/email", placeholder);
 
 router.get("/account/club", placeholder);

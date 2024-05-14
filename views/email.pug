@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    section#update-email-content
+        div 
+            h2 Update Email Address 
+            div#update-email-wrapper
+                form#update-email-form(action="", method="post") 
+                    label(for="email") Email
+                        input(type="email", name="email", id="email") 
+                    label(for="confirm-email") Confirm Email
+                        input(type="text", name="confirm-email", id="confirm-email")
+                    button(type="submit") Update Email 
+                a(href="/account")  Cancel
+                
+                

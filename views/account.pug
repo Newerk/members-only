@@ -7,10 +7,10 @@ block content
             p Username: #{username}
             div.acc-detail    
                 p Email: #{email}
-                button Edit 
+                button(onclick=updateEmailRedirect) Edit 
             div.acc-detail    
                 p Club Status: #{memberStatus}
-                button Change 
+                button(onclick=clubMemberRedirect) Change 
             div.acc-detail 
                 p Admin: #{adminStatus}
-                button Change
+                button(onclick=adminStatusRedirect) Change
