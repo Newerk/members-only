@@ -1,0 +1,16 @@
+extends layout
+
+block content 
+    section
+        h2 My Account
+        div
+            p Username: #{username}
+            div.acc-detail    
+                p Email: #{email}
+                button Edit 
+            div.acc-detail    
+                p Club Status: #{memberStatus}
+                button Change 
+            div.acc-detail 
+                p Admin: #{adminStatus}
+                button Change
