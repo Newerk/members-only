@@ -29,7 +29,7 @@ router.post("/account", placeholder);
 router.get("/account/email", accountController.update_email_get);
 router.post("/account/email", placeholder);
 
-router.get("/account/club", placeholder);
+router.get("/account/club", accountController.club_status_get);
 router.post("/account/club", placeholder);
 
 router.get("/account/admin", placeholder);

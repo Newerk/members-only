@@ -17,5 +17,7 @@ module.exports = {
     res.render("email");
   }),
 
-  club_status_get: asyncHandler(async (req, res, next) => {}),
+  club_status_get: asyncHandler(async (req, res, next) => {
+    res.render("joinclub");
+  }),
 };
