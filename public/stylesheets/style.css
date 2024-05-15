@@ -204,3 +204,14 @@ button {
 #update-email-wrapper > a {
   place-self: center;
 }
+
+.redirect-to-acc {
+  border-style: none;
+  background-color: white;
+  text-decoration: underline;
+  width: fit-content;
+  place-self: center;
+  color: #00b7ff;
+
+}
+

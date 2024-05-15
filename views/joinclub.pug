@@ -1,0 +1,9 @@
+extends layout
+block content
+    section 
+        h2 Club Membership
+        div
+            div 
+                p #{memberStatus}
+                button Change 
+            button.redirect-to-acc(onclick='redirectToAccountPage()') Cancel

@@ -3,6 +3,7 @@ html
   head
     title Members Only
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/javascripts/eventListeners.js")
   body
     header 
       div#upper-header 
@@ -10,7 +11,7 @@ html
 
         button#admin-mode-btn Only appear once user is logged in--> Admin Mode: Disabled
       div#lower-header 
-        button.home-btn Members Only
+        button.home-btn(onclick="redirectToHome()") Members Only
         div.header-btns-wrapper
           button.signup-btn Sign Up 
           button.login-btn Login

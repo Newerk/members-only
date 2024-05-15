@@ -18,6 +18,10 @@ module.exports = {
   }),
 
   club_status_get: asyncHandler(async (req, res, next) => {
-    res.render("joinclub");
+    //to get memebership status, search for user in the DB by ID, and then retrieve the club status
+    //if isMember === true => "Active Member", else => "Not a Member"
+    res.render("joinclub", {
+      memberStatus: "Not a Member (placeholder)",
+    });
   }),
 };
