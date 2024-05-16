@@ -9,3 +9,12 @@ const redirectToHome = () => {
 const redirectToAccountPage = () => {
   window.location.replace("/account");
 };
+
+const redirectToSignup = () => {
+  window.location.replace("/signup");
+};
+
+const redirectToLogin = () => {
+  window.location.replace("/login");
+};
+
