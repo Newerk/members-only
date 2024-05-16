@@ -16,7 +16,7 @@ userCredentialSchema.virtual("fullname", () => {
 });
 
 userCredentialSchema.virtual("url", () => {
-  return `/profile/${this._id}`;
+  return `/account/${this._id}`;
 });
 
 module.exports = mongoose.model("Account", userCredentialSchema);

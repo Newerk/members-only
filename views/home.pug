@@ -1,4 +1,20 @@
 extends layout
 
 block content
-    h1 Homepage
+    section
+        div
+            
+            h1 Messages
+            //if logged out show <p>
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut vehicula ante. Ut quis elit.
+            div.message-board-container 
+                div.message-board 
+                div.text-input-wrapper
+                    //if not logged in, input is unusuable and has a placeholder value
+                    input(type="text", name="", placeholder="Must be a member to send messages")
+                    //else
+                        input(type="text", name="", placeholder="Must be a member to send messages")
+
+                    button Send
+
+

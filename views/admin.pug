@@ -1,0 +1,13 @@
+extends layout
+block content
+    section 
+        h2 Update Admin Status
+            div
+                p #{adminStatus}
+                if !user.isAdmin
+                    form(action="", method="post") 
+                        label(for="secret") Enter Secret Password: 
+                        input(type="password", name="secret", id="secret")
+                        button(type="submit") Update 
+                else 
+                    button Remove Admin Status

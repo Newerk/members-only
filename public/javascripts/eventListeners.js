@@ -8,5 +8,4 @@ const redirectToHome = () => {
 
 const redirectToAccountPage = () => {
   window.location.replace("/account");
-
-}
+};

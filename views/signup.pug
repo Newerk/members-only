@@ -4,12 +4,12 @@ block content
     section.credentials-content
         form.credentials-form(action="", method="post") 
             label(for="username") Username: 
-                input(type="text", name="username")
+                input(type="text", name="username", id="username")
 
             label(for="password") Password: 
-                input(type="password", name="password")
+                input(type="password", name="password", id="password")
 
             label(for="confirm-pw") Confirm Password: 
-                input(type="password", name="consfirm-pw")
+                input(type="password", name="consfirm-pw", id="confirm-pw")
 
             button(type="submit") Sign Up

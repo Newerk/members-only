@@ -212,6 +212,10 @@ button {
   width: fit-content;
   place-self: center;
   color: #00b7ff;
-
 }
 
+.message-board {
+  height: 20rem;
+  width: 20rem;
+  background-color: orange;
+}
