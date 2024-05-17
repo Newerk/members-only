@@ -4,10 +4,15 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const session = require("express-session");
+const LocalStrategy = require("passport-local").Strategy;
+const asyncHandler = require("express-async-handler");
+const Account = require("./models/userCredential");
 require("dotenv").config();
 
 const webLinkRouters = require("./routes/webLinks");
 const { error } = require("console");
+const passport = require("passport");
 
 mongoose.connect(process.env.DB_LINK).catch((error) => {
   console.log(error);
@@ -26,8 +31,36 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(session({ secret: "cat", resave: false, saveUninitialized: true }));
+app.use(passport.session());
 
 app.use("/", webLinkRouters);
+
+passport.use(
+  new LocalStrategy(
+    asyncHandler(async (username, password, done) => {
+      const user = await Account.findOne({ username: username });
+      if (!user) {
+        return done(null, false, { message: "Incorrect Username" });
+      }
+      if (user.password !== password) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+      return done(null, user);
+    })
+  )
+);
+
+passport.serializeUser((user, done) => {
+  return done(null, user.id);
+});
+
+passport.deserializeUser(
+  asyncHandler(async (id, done) => {
+    const user = await Account.findById(id);
+    done(null, user);
+  })
+);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

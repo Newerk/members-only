@@ -3,13 +3,19 @@ extends layout
 block content 
     section.credentials-content
         form.credentials-form(action="", method="post") 
+            label(for="firstname") First Name: 
+                input(type="text", name="firstname", id="firstname")
+
+            label(for="lastname") Last Name: 
+                input(type="text", name="lastname", id="lastname")
+
             label(for="username") Username: 
                 input(type="text", name="username", id="username")
 
             label(for="password") Password: 
                 input(type="password", name="password", id="password")
 
-            label(for="confirm-pw") Confirm Password: 
-                input(type="password", name="consfirm-pw", id="confirm-pw")
+            label(for="confirm_pw") Confirm Password: 
+                input(type="password", name="consfirm_pw", id="confirm_pw")
 
             button(type="submit") Sign Up

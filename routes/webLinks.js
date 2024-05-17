@@ -3,6 +3,7 @@ const router = express.Router();
 const loginController = require("../controllers/loginController");
 const signupController = require("../controllers/signupController");
 const accountController = require("../controllers/accountController");
+const passport = require("passport");
 
 const placeholder = async (req, res, next) => {
   try {
@@ -18,10 +19,16 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/login", loginController.login_get);
-router.post("/login", placeholder);
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/account",
+    failureRedirect: "/login",
+  })
+);
 
 router.get("/signup", signupController.signup_get);
-router.post("/signup", placeholder);
+router.post("/signup", signupController.signup_post);
 
 router.get("/account/", accountController.account_get); //page that shows information such as username, email, and club status and admin status
 router.post("/account/", placeholder);
