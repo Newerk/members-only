@@ -5,15 +5,21 @@ block content
         div
             
             h1 Messages
+            -if(!user){
             //if logged out show <p>
-            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut vehicula ante. Ut quis elit.
+            p Non-members can only view anonymized messages
+            -}
+
             div.message-board-container 
                 div.message-board 
                 div.text-input-wrapper
-                    //if not logged in, input is unusuable and has a placeholder value
-                    input(type="text", name="", placeholder="Must be a member to send messages")
-                    //else
+                    -if(!user){
+                        //if not logged in, input is unusuable and has a placeholder value
                         input(type="text", name="", placeholder="Must be a member to send messages")
+                    -}else{
+                        //else
+                        input(type="text", name="", placeholder="Type message here to add comment")
+                    -}
 
                     button Send
 

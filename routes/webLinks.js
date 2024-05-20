@@ -15,7 +15,7 @@ const placeholder = async (req, res, next) => {
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("home");
+  res.render("home", {user: req.user});
 });
 
 router.get("/login", loginController.login_get);
