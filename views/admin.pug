@@ -4,7 +4,7 @@ block content
         h2 Update Admin Status
             div
                 p #{adminStatus}
-                if !user.isAdmin
+                if !getUser.isAdmin
                     form(action="", method="post") 
                         label(for="secret") Enter Secret Password: 
                         input(type="password", name="secret", id="secret")

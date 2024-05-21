@@ -22,9 +22,9 @@ router.get("/login", loginController.login_get);
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/account",
+    successRedirect: "/",
     failureRedirect: "/login",
-  })
+  }),
 );
 
 router.get("/signup", signupController.signup_get);

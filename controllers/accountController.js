@@ -11,11 +11,12 @@ module.exports = {
       updateEmailRedirect: "location.href='/account/email'",
       clubMemberRedirect: "location.href='/account/club'",
       adminStatusRedirect: "location.href='/account/admin'",
+      user: req.user,
     });
   }),
 
   update_email_get: asyncHandler(async (req, res, next) => {
-    res.render("email");
+    res.render("email", { user: req.user });
   }),
 
   club_status_get: asyncHandler(async (req, res, next) => {
@@ -23,14 +24,15 @@ module.exports = {
     //if isMember === true => "Active Member", else => "Not a Member"
     res.render("joinclub", {
       memberStatus: "Not a Member (placeholder)",
+      user: req.user,
     });
   }),
 
   admin_status_get: asyncHandler(async (req, res, next) => {
-    const user = await Account.findOne({ username: "admin" }).exec();
+    const getUser = await Account.findOne({ username: "admin" }).exec();
 
     const adminStatus = () => {
-      if (user.isAdmin === false) {
+      if (getUser.isAdmin === false) {
         return "Not an Admin (placeholder)";
       } else {
         return "Admin Status is Active";
@@ -38,8 +40,9 @@ module.exports = {
     };
 
     res.render("admin", {
-      user: user,
+      getUser: getUser,
       adminStatus: adminStatus(),
+      user: req.user,
     });
   }),
 };
