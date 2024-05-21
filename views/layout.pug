@@ -8,9 +8,12 @@ html
     header 
       -if(user){
         div#upper-header 
-         button#club-join-btn Join the Club <--- this should only appear after the user has logged in and not currently a club member
-         
-         button#admin-mode-btn Only appear once user is logged in--> Admin Mode: Disabled
+          -if(!sessionUser.isMember){
+            button#club-join-btn Join the Club
+          -}
+          -if(sessionUser.isAdmin){
+            button#admin-mode-btn Admin Mode: Active
+          -}
       -}
 
       div#lower-header 

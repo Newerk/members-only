@@ -4,6 +4,9 @@ const loginController = require("../controllers/loginController");
 const signupController = require("../controllers/signupController");
 const accountController = require("../controllers/accountController");
 const passport = require("passport");
+const asyncHandler = require("express-async-handler");
+const Account = require("../models/userCredential");
+const currentUser = require("../currentUser");
 
 const placeholder = async (req, res, next) => {
   try {
@@ -14,9 +17,15 @@ const placeholder = async (req, res, next) => {
 };
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("home", {user: req.user});
-});
+router.get(
+  "/",
+  asyncHandler(async (req, res, next) => {
+    res.render("home", {
+      user: req.user,
+      sessionUser: await currentUser(req, Account),
+    });
+  })
+);
 
 router.get("/login", loginController.login_get);
 router.post(
@@ -24,7 +33,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
-  }),
+  })
 );
 
 router.get("/signup", signupController.signup_get);

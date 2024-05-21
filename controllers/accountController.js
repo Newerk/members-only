@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Account = require("../models/userCredential");
+const currentUser = require("../currentUser");
 
 module.exports = {
   account_get: asyncHandler(async (req, res, next) => {
@@ -12,11 +13,15 @@ module.exports = {
       clubMemberRedirect: "location.href='/account/club'",
       adminStatusRedirect: "location.href='/account/admin'",
       user: req.user,
+      sessionUser: await currentUser(req, Account),
     });
   }),
 
   update_email_get: asyncHandler(async (req, res, next) => {
-    res.render("email", { user: req.user });
+    res.render("email", {
+      user: req.user,
+      sessionUser: await currentUser(req, Account),
+    });
   }),
 
   club_status_get: asyncHandler(async (req, res, next) => {
@@ -29,10 +34,11 @@ module.exports = {
   }),
 
   admin_status_get: asyncHandler(async (req, res, next) => {
-    const getUser = await Account.findOne({ username: "admin" }).exec();
+    const sessionUser = await currentUser(req, Account);
+    
 
     const adminStatus = () => {
-      if (getUser.isAdmin === false) {
+      if (!sessionUser.isAdmin) {
         return "Not an Admin (placeholder)";
       } else {
         return "Admin Status is Active";
@@ -40,9 +46,9 @@ module.exports = {
     };
 
     res.render("admin", {
-      getUser: getUser,
       adminStatus: adminStatus(),
       user: req.user,
+      sessionUser: sessionUser,
     });
   }),
 };
