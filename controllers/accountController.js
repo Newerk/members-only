@@ -30,12 +30,12 @@ module.exports = {
     res.render("joinclub", {
       memberStatus: "Not a Member (placeholder)",
       user: req.user,
+      sessionUser: await currentUser(req, Account),
     });
   }),
 
   admin_status_get: asyncHandler(async (req, res, next) => {
     const sessionUser = await currentUser(req, Account);
-    
 
     const adminStatus = () => {
       if (!sessionUser.isAdmin) {

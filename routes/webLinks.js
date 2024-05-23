@@ -20,9 +20,10 @@ const placeholder = async (req, res, next) => {
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
+    const sessionUser = await currentUser(req, Account);
     res.render("home", {
       user: req.user,
-      sessionUser: await currentUser(req, Account),
+      sessionUser: sessionUser,
     });
   })
 );

@@ -221,3 +221,13 @@ button {
   width: 20rem;
   background-color: orange;
 }
+
+.account-dropdown {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
