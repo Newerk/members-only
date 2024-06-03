@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcryptjs");
 const Account = require("./models/userCredential");
 require("dotenv").config();
 
@@ -43,9 +44,12 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect Username" });
       }
-      if (user.password !== password) {
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) {
+        // passwords do not match!
         return done(null, false, { message: "Incorrect password" });
       }
+
       return done(null, user);
     })
   )
@@ -70,7 +74,6 @@ app.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
