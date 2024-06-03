@@ -24,10 +24,10 @@ html
             button.login-btn(onclick="redirectToLogin()") Login
           -} else {
             div.header-account-btns
-              button(onclick="toggleMenus()") #{sessionUser.username}
+              button.username-btn(onclick="toggleMenus()") #{sessionUser.username}
               div.account-dropdown
-                button(onclick="redirectToAccountPage()") Account
-                button Log Out
+                button(onclick="redirectToAccountPage()") My Account
+                button(onclick="handleLogOut()") Log Out
           -}
 
 

@@ -92,12 +92,13 @@ header {
 .header-btns-wrapper {
   grid-column: 3;
   display: flex;
-  gap: 10px;
+  height: 100%;
+  width: 9rem;
 }
 
 #club-join-btn {
   grid-column: 1;
-  background-color: rgb(253, 199, 50);
+  background-color: rgb(3, 3, 2);
   border-style: none;
 }
 
@@ -230,4 +231,15 @@ button {
 
 .visible {
   visibility: visible;
+}
+
+
+.header-account-btns {
+  height: 0;
+  width: 100%;
+}
+
+.username-btn {
+  margin-top: .6rem;
+  width: 100%;
 }
