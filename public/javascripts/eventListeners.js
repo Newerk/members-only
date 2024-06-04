@@ -40,3 +40,8 @@ const toggleMenus = () => {
     }
   };
 };
+
+
+const clearTextbox = () => {
+  //this will clear the text box when user submits a message
+}

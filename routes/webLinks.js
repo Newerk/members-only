@@ -7,6 +7,7 @@ const passport = require("passport");
 const asyncHandler = require("express-async-handler");
 const Account = require("../models/userCredential");
 const currentUser = require("../currentUser");
+const messageController = require("../controllers/messageController");
 
 const placeholder = async (req, res, next) => {
   try {
@@ -27,6 +28,7 @@ router.get(
     });
   })
 );
+router.post("/", messageController.createMessage)
 
 router.get("/login", loginController.login_get);
 router.post(

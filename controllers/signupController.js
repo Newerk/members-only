@@ -15,8 +15,7 @@ module.exports = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         username: req.body.username,
-        password:
-          hashedPassword /*generatePassword(hash, */ /*req.body.password*/ /*, salt)*/,
+        password: hashedPassword,
       });
 
       await newUser.save();

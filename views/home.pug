@@ -12,15 +12,16 @@ block content
 
             div.message-board-container 
                 div.message-board 
-                div.text-input-wrapper
-                    -if(!user){
-                        //if not logged in, input is unusuable and has a placeholder value
-                        input(type="text", name="", placeholder="Must be a member to send messages")
-                    -}else{
-                        //else
-                        input(type="text", name="", placeholder="Type message here to add comment")
-                    -}
+                form(action="", method="post") 
+                    div.text-input-wrapper
+                        -if(!user){
+                            //if not logged in, input is unusuable and has a placeholder value
+                            input(type="text", name="textbox", placeholder="Must be a member to send messages")
+                        -}else{
+                            //else
+                            input(type="text", name="textbox", placeholder="Type message here to add comment")
+                        -}
 
-                    button Send
+                        button(type="submit") Send
 
 
