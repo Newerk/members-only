@@ -221,6 +221,11 @@ button {
   height: 20rem;
   width: 20rem;
   background-color: orange;
+  overflow-y: scroll;
+}
+
+.message-wrapper {
+
 }
 
 .account-dropdown {

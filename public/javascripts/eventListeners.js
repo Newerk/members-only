@@ -22,7 +22,6 @@ const handleLogOut = () => {
   window.location.replace("/log-out");
 };
 
-
 const toggleDropdown = (className) => {
   const element = document.querySelector(`.${className}`);
   element.classList.toggle("visible");
@@ -41,7 +40,14 @@ const toggleMenus = () => {
   };
 };
 
-
 const clearTextbox = () => {
   //this will clear the text box when user submits a message
-}
+};
+
+const refreshMesssageBoard = () => {
+  /*instead of refreshing the entire page, i just want to refresh the message board
+  everytime new messages are added or removed from the database
+  
+  ignore refreshing on removals for now, just focused on added messages
+  */
+};

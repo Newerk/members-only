@@ -12,6 +12,12 @@ block content
 
             div.message-board-container 
                 div.message-board 
+                    each msg in allMessages
+                        div.message-wrapper
+                            p.username= msg.account.username
+                            p.message= msg.message 
+                            p.timestamp= msg.timestamp
+
                 form(action="", method="post") 
                     div.text-input-wrapper
                         -if(!user){

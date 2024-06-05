@@ -8,6 +8,7 @@ const asyncHandler = require("express-async-handler");
 const Account = require("../models/userCredential");
 const currentUser = require("../currentUser");
 const messageController = require("../controllers/messageController");
+const Message = require("../models/message");
 
 const placeholder = async (req, res, next) => {
   try {
@@ -22,13 +23,17 @@ router.get(
   "/",
   asyncHandler(async (req, res, next) => {
     const sessionUser = await currentUser(req, Account);
+
+    const allMessages = await Message.find().populate('account').exec();
+
     res.render("home", {
       user: req.user,
       sessionUser: sessionUser,
+      allMessages: allMessages,
     });
   })
 );
-router.post("/", messageController.createMessage)
+router.post("/", messageController.createMessage);
 
 router.get("/login", loginController.login_get);
 router.post(
